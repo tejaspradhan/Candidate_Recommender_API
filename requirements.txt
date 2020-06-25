@@ -1,0 +1,11 @@
+Flask==1.0.2
+MarkupSafe==1.0
+gensim
+nltk
+pymongo
+urllib3
+pdfminer3
+PyPDF2
+requests
+dnspython
+pymongo[srv]
