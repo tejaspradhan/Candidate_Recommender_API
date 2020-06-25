@@ -34,13 +34,13 @@ class Helper:
 
     
     def createDictionary(self, ex):
-        '''
         url = "https://hrlanesprodstorage1.blob.core.windows.net/public/master.json"
         master = requests.get(url)
         data = master.json()
         '''
-        with open("C:\\Users\Rashi BHansali\\Desktop\Model\\Build_Model\\master.json") as dataFile:
+        with open("") as dataFile:
             data = json.load(dataFile)
+        '''
         obj_ind = data['IndustryData']
         broad = data['BroadAreaData']
         country = data['countryData']
@@ -162,10 +162,10 @@ class Helper:
         '''
         name = (int(fn), int(ex))
         try:
-            dictionary = gensim.corpora.Dictionary.load("C:\\Users\\Rashi BHansali\\Desktop\\Final\\"+str(name)+"resume.dict")
-            model = gensim.models.TfidfModel.load("C:\\Users\\Rashi BHansali\\Desktop\\Final\\"+str(name)+"tfidf.model")
-            similarity_obj = gensim.similarities.Similarity.load("C:\\Users\\Rashi BHansali\\Desktop\\Final\\"+str(name)+"similarity_index")
-            doc_included = list(pickle.load(open("C:\\Users\\Rashi BHansali\\Desktop\\Final\\"+str(name)+"doc_included.list", "rb+")))
+            dictionary = gensim.corpora.Dictionary.load(""+str(name)+"resume.dict")
+            model = gensim.models.TfidfModel.load(""+str(name)+"tfidf.model")
+            similarity_obj = gensim.similarities.Similarity.load(""+str(name)+"similarity_index")
+            doc_included = list(pickle.load(open(""+str(name)+"doc_included.list", "rb+")))
             cleaned_bow = dictionary.doc2bow(cleanToken) #bag of words of job description
             cleaned_tfidf = model[cleaned_bow] #tfidf of JD
 
