@@ -31,4 +31,4 @@ jobs:
       with:
         app-name: 'mbtflasktrial'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1e097b40e2e5493988ceed28f8688813 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b9423a6051a14fcaaf5b7b67a12b4c48 }}
