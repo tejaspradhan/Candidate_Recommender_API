@@ -1,6 +1,6 @@
 from flask import Flask
 from pymongo import MongoClient
-from Helper import Helper
+import Helper
 import pymongo
 
 
@@ -12,7 +12,7 @@ def build_model():
     db = connection['hrlanes-web-db']
     data = db['users']
     ex = data.find({"$and": [{'ProfileSummaryInfo': {"$exists": True}}, {'recommenderProcessed': {"$exists": True}}, {'recommenderProcessed': True }]})
-    helper = Helper()
+    helper = Helper.Helper()
     '''
     d = helper.createDictionary(ex)
     d = {(5,3): [(27, "abcd jfbskgb")], (16,3): [(21, "hgfjaefv jbhjesjgh"), (10, "jrbvawhfvawbkjw jkbfj")]}
