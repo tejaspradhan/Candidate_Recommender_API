@@ -142,7 +142,7 @@ class Helper:
 
     def create_tfidf(self, name, documents, included):
         try:
-            dictionary = gensim.corpora.Dictionary(documents)
+            '''dictionary = gensim.corpora.Dictionary(documents)
             with open(str(name)+"_resume.dict", "wb+") as fp:
                 pickle.dump(dictionary, fp)
             corpus = [dictionary.doc2bow(text) for text in documents]
@@ -153,6 +153,7 @@ class Helper:
             similarity_object.save(str(name)+'_similarity_index.0')
             with open(str(name)+"_doc_included.list", "wb+") as fp:
                 pickle.dump(included, fp)
+            '''
         except:
             pass
     def recommend(self, ex, fn, cleanToken):
