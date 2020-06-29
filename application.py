@@ -15,7 +15,6 @@ def build_model():
     ex = data.find({"$and": [{'ProfileSummaryInfo': {"$exists": True}}, {'recommenderProcessed': {"$exists": True}}, {'recommenderProcessed': True }]})
     helper = Helper()
     d = helper.createDictionary(ex)
-    '''
     d = {(5,3): [(27, "abcd jfbskgb")], (16,3): [(21, "hgfjaefv jbhjesjgh"), (10, "jrbvawhfvawbkjw jkbfj")]}
     resumeList = []
     for key in d:
@@ -28,6 +27,7 @@ def build_model():
             for f in resumeList:
                 documents.append(helper.cleanTextAndTokenize(f))
                 helper.create_tfidf(str(key), documents, doc_included)
+    '''
     return "Models Created!"
 if __name__ == "__main__":
     app.run(debug=True)
