@@ -42,7 +42,7 @@ class Helper:
         data = master.json()
         '''
         path = os.getcwd()+"/"
-        with open(path+"master.json") as dataFile:
+        with open(path+"master.json", encoding='utf-8') as dataFile:
             data = json.load(dataFile)
         obj_ind = data['IndustryData']
         broad = data['BroadAreaData']
