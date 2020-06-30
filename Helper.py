@@ -41,7 +41,7 @@ class Helper:
         master = requests.get(url)
         data = master.json()
         '''
-        path = os.getcwd()+"\\"
+        path = os.getcwd()+"/"
         with open(path+"master.json") as dataFile:
             data = json.load(dataFile)
         obj_ind = data['IndustryData']
