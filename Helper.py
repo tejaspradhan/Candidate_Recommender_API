@@ -139,32 +139,30 @@ class Helper:
                 e = item['ProfileSummaryInfo']['ExperienceLevel']
                 for i in range(len(item['ProfileSummaryInfo']['FunctionalAreas'])):
                     fid = item['ProfileSummaryInfo']['FunctionalAreas'][i]['Funct_id']
-                    if (fid, e) not in d:
+                    if (fid,e) not in d:
                         d[(fid,e)] = []
-                    d[(fid, e)].append((item['_id'], text))
+                    d[(fid,e)].append((item['_id'], text))
         return d
 
     def create_tfidf(self, name, documents, included):
-        try:
-            dictionary = gensim.corpora.Dictionary(documents)
-            with open(str(name)+"_resume.dict", "wb+") as fp:
-                pickle.dump(dictionary, fp)
-            corpus = [dictionary.doc2bow(text) for text in documents]
-            model = gensim.models.TfidfModel(corpus)
-            model.save(str(name)+"_tfidf.model")
-            index_tmpfile = get_tmpfile('similarity_object')
-            similarity_object = gensim.similarities.Similarity(index_tmpfile,model[corpus],num_features=len(dictionary))
-            similarity_object.save(str(name)+'_similarity_index.0')
-            with open(str(name)+"_doc_included.list", "wb+") as fp:
-                pickle.dump(included, fp)
-            
-        except:
-            pass
+        path = os.getcwd()+"/"
+        dictionary = gensim.corpora.Dictionary(documents)
+        with open(path+str(name)+"_resume.dict", "wb+") as fp:
+            pickle.dump(dictionary, fp)
+        corpus = [dictionary.doc2bow(text) for text in documents]
+        model = gensim.models.TfidfModel(corpus)
+        model.save(path+str(name)+"_tfidf.model")
+        index_tmpfile = get_tmpfile('similarity_object')
+        similarity_object = gensim.similarities.Similarity(index_tmpfile,model[corpus],num_features=len(dictionary))
+        similarity_object.save(path+str(name)+'_similarity_index.0')
+        with open(path+str(name)+"_doc_included.list", "wb+") as fp:
+            pickle.dump(included, fp)
+           
     def recommend(self, ex, fn, cleanToken):
         '''
             Function takes in experience, functional area, tokenized job description and recommends candidate IDs
         '''
-        name = (int(fn), int(ex))
+        name = (int(fn),int(ex))
         try:
             path = os.getcwd()+"/"
             dictionary = gensim.corpora.Dictionary.load(path+str(name)+"_resume.dict")
