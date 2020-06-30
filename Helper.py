@@ -1,9 +1,9 @@
 import re
 import nltk
-nltk.download()
+nltk.download('punkt')
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
 import io
 import os
 import PyPDF2
@@ -24,14 +24,12 @@ class Helper:
         
         #KEEP ALPHABATES, SPACE
         #LOWER CASE
-        lemmatizer = WordNetLemmatizer()
         text = re.sub('[^A-Za-z ]+', ' ', text).lower()
         tokens = word_tokenize(text)
         cleanToken = []
         for token in tokens:
             if(token not in self.stop_words):
                 cleanToken.append(token)
-        cleanToken = [lemmatizer.lemmatize(x) for x in cleanToken]
         return cleanToken
 
     
