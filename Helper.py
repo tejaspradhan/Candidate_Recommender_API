@@ -168,7 +168,7 @@ class Helper:
         '''
         name = (int(fn), int(ex))
         try:
-            path = os.getcwd()+"\\"
+            path = os.getcwd()+"/"
             dictionary = gensim.corpora.Dictionary.load(path+str(name)+"_resume.dict")
             model = gensim.models.TfidfModel.load(path+str(name)+"_tfidf.model")
             similarity_obj = gensim.similarities.Similarity.load(path+str(name)+"_similarity_index.0")
