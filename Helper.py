@@ -138,10 +138,11 @@ class Helper:
             if 'ExperienceLevel' in item['ProfileSummaryInfo']:
                 e = item['ProfileSummaryInfo']['ExperienceLevel']
                 for i in range(len(item['ProfileSummaryInfo']['FunctionalAreas'])):
-                    fid = item['ProfileSummaryInfo']['FunctionalAreas'][i]['FunctionValue']
-                    if (fid,e) not in d:
-                        d[(fid,e)] = []
-                    d[(fid,e)].append((item['_id'], text))
+                    if 'FunctionValue' in item['ProfileSummaryInfo']['FunctionalAreas'][i]:
+                        fid = item['ProfileSummaryInfo']['FunctionalAreas'][i]['FunctionValue']
+                        if (fid,e) not in d:
+                            d[(fid,e)] = []
+                        d[(fid,e)].append((item['_id'], text))
         return d
 
     def create_tfidf(self, name, documents, included):
