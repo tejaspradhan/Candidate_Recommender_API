@@ -31,7 +31,7 @@ def build_model():
                     helper.create_tfidf(str(key), documents, doc_included)
         return str(d)
     
-    elif method == 'recommend':
+    elif method =='recommend':
         exp = request.args.get('e')
         farea = request.args.get('f')
         jd = request.args.get('jd')
