@@ -138,7 +138,7 @@ class Helper:
             if 'ExperienceLevel' in item['ProfileSummaryInfo']:
                 e = item['ProfileSummaryInfo']['ExperienceLevel']
                 for i in range(len(item['ProfileSummaryInfo']['FunctionalAreas'])):
-                    fid = item['ProfileSummaryInfo']['FunctionalAreas'][i]['Funct_id']
+                    fid = item['ProfileSummaryInfo']['FunctionalAreas'][i]['FunctionValue']
                     if (fid,e) not in d:
                         d[(fid,e)] = []
                     d[(fid,e)].append((item['_id'], text))
