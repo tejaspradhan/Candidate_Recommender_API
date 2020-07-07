@@ -29,7 +29,7 @@ def build_model():
                 for f in resumeList:
                     documents.append(helper.cleanTextAndTokenize(f))
                     helper.create_tfidf(str(key), documents, doc_included)
-        return json.dumps(d)
+        return str(d)
     
     elif method == 'recommend':
         exp = request.args.get('e')
