@@ -68,7 +68,7 @@ class Helper:
         d = {}
         for filter in hard_filter:
             d[filter] = []
-
+            
         for item in ex:
             text = ''
             if 'ProfileName' in item['ProfileSummaryInfo']:
